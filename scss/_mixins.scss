@@ -1,0 +1,116 @@
+@mixin flexCenter_B {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+@mixin flexCenter_A {
+    display: flex;
+    @include columnDir;
+    justify-content: space-around;
+}
+@mixin flexColumn_JC {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   @include columnDir;
+}
+@mixin flexColumn_JC_onl {
+    display: flex;
+    justify-content: center;
+    @include columnDir;
+ }
+ @mixin flexColumn {
+    display: flex;
+    @include columnDir;
+ }
+ @mixin columnDir {
+    flex-direction: column; 
+     
+ }
+@mixin btnDP {
+    width: 195px;
+    height: 50px;
+    border: 1px solid #7d7a7c;
+    outline: none;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    font-size: 20px;
+    cursor: pointer;
+    &:hover {
+        background: $lightW;
+        border: none;
+        color: $acent;
+        transition: all ease-in .2s;
+    }
+}
+
+@mixin showFxHeader {
+    position: fixed;
+    top: 0;
+    left: 0;   
+    animation-name: showHeader;
+    animation-duration: .3s;
+    @keyframes showHeader {
+        from {
+            top: -100%;
+        }
+        to {
+            top: 0;
+        }
+    }
+}
+
+@mixin sprite {
+    position: relative;
+    &:after,&::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+@mixin arrowSwiper {
+    text-transform: none!important;
+    letter-spacing: 0;
+    text-transform: none;
+    font-variant: initial;
+    line-height: 1;
+    font-family: 'swiper-icons';
+}
+@mixin btnsSwiper {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    &__next {
+        &:after {
+            content:'next';
+        }
+    }
+    &__prev {
+        &:after {
+            content:'prev';
+        }
+    }
+    &__item {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background: none;
+        &.swiper-button-disabled {
+            opacity: 0.5;
+            cursor: auto;
+        }
+       &::after {
+            @include arrowSwiper;
+        }
+    }
+}
